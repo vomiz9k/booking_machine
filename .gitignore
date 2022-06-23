@@ -1,0 +1,6 @@
+.vscode
+CMakeFiles
+CMakeCache.txt
+Booking_machine
+Makefile
+cmake_install.cmake
