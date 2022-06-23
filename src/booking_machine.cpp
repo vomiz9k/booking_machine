@@ -28,7 +28,11 @@ std::vector<Booking> BookingMachine::selectBefore(const Date& date) const {
 
 std::vector<Booking> BookingMachine::selectVisiting(const std::string& from, const std::string& to) const {
     std::vector<Booking> result;
-    auto range = _ways.find(from)->second.equal_range(to);
+    auto it = _ways.find(from);
+    if (it == _ways.end()) {
+        return result;
+    }
+    auto range = it->second.equal_range(to);
     for (auto it = range.first; it != range.second; ++it) {
         result.push_back(_bookings[it->second]);
     }
